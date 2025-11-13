@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contra YouTube Recommender</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 Contra YouTube Recommender</h1>
+            <p class="subtitle">Discover videos with opposite perspectives to break out of your echo chamber</p>
+        </header>
+
+        <main>
+            <!-- Input Section -->
+            <section class="input-section">
+                <h2>Enter a YouTube Video</h2>
+                <div class="input-group">
+                    <input
+                        type="text"
+                        id="videoInput"
+                        placeholder="Enter YouTube video ID or URL (e.g., dQw4w9WgXcQ)"
+                        class="video-input"
+                    >
+                    <button id="analyzeBtn" class="btn btn-primary">
+                        Find Contra Videos
+                    </button>
+                </div>
+                <p class="help-text">
+                    Enter a YouTube video ID (11 characters) or paste a full YouTube URL
+                </p>
+            </section>
+
+            <!-- Loading Section -->
+            <section id="loadingSection" class="loading-section hidden">
+                <div class="loader"></div>
+                <p>Analyzing video and finding opposite perspectives...</p>
+                <p class="loading-details">This may take a minute</p>
+            </section>
+
+            <!-- Error Section -->
+            <section id="errorSection" class="error-section hidden">
+                <div class="error-icon">⚠️</div>
+                <h3>Error</h3>
+                <p id="errorMessage"></p>
+                <button id="retryBtn" class="btn btn-secondary">Try Again</button>
+            </section>
+
+            <!-- Results Section -->
+            <section id="resultsSection" class="results-section hidden">
+                <!-- Input Video Card -->
+                <div class="input-video-card">
+                    <h3>Original Video</h3>
+                    <div id="inputVideoCard" class="video-card"></div>
+                </div>
+
+                <!-- Statistics -->
+                <div class="statistics">
+                    <h3>Analysis Summary</h3>
+                    <div id="summaryStats" class="stats-grid"></div>
+                </div>
+
+                <!-- Contra Videos -->
+                <div class="contra-videos">
+                    <h3>Contra Videos (Opposite Perspectives)</h3>
+                    <p class="section-description">
+                        These videos represent perspectives that are diametrically opposite to the input video
+                    </p>
+                    <div id="contraVideosList" class="videos-grid"></div>
+                </div>
+            </section>
+
+            <!-- API Configuration -->
+            <section class="config-section">
+                <details>
+                    <summary>Advanced Settings</summary>
+                    <div class="config-content">
+                        <div class="config-item">
+                            <label for="numVideos">Number of contra videos:</label>
+                            <input type="number" id="numVideos" value="20" min="5" max="50">
+                        </div>
+                        <div class="config-item">
+                            <label for="sampleSize">Random sample size:</label>
+                            <input type="number" id="sampleSize" value="1000" min="100" max="5000">
+                        </div>
+                        <div class="config-item">
+                            <label for="method">Algorithm method:</label>
+                            <select id="method">
+                                <option value="diametric">Diametric (recommended)</option>
+                                <option value="centroid">Centroid</option>
+                            </select>
+                        </div>
+                        <div class="config-item">
+                            <label for="apiUrl">API URL:</label>
+                            <input type="text" id="apiUrl" value="http://localhost:8000">
+                        </div>
+                    </div>
+                </details>
+            </section>
+        </main>
+
+        <footer>
+            <p>
+                Built with the random prefix sampling methodology from
+                <a href="https://journalqd.org/article/view/4066" target="_blank">McGrady et al. (2023)</a>
+            </p>
+            <p class="disclaimer">
+                This tool is for educational purposes to promote diverse perspectives and critical thinking
+            </p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
