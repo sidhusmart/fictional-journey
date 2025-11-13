@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blast from the Past</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 350px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 0;
+    }
+
+    .header {
+      padding: 24px 20px;
+      text-align: center;
+    }
+
+    .logo {
+      font-size: 48px;
+      margin-bottom: 12px;
+      animation: bounce 2s ease infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    h1 {
+      font-size: 20px;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .tagline {
+      font-size: 13px;
+      opacity: 0.9;
+      line-height: 1.5;
+    }
+
+    .content {
+      background: white;
+      color: #333;
+      padding: 24px 20px;
+      border-radius: 20px 20px 0 0;
+    }
+
+    .info-section {
+      margin-bottom: 20px;
+    }
+
+    .info-title {
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 8px;
+      color: #667eea;
+    }
+
+    .info-text {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+      margin-bottom: 10px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn-secondary {
+      background: #f5f5f5;
+      color: #666;
+    }
+
+    .btn-secondary:hover {
+      background: #e0e0e0;
+    }
+
+    .instruction {
+      background: #f8f9ff;
+      border: 2px solid #d0d9ff;
+      border-radius: 10px;
+      padding: 16px;
+      margin-top: 16px;
+      font-size: 12px;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .instruction strong {
+      color: #667eea;
+    }
+
+    .footer {
+      padding: 16px 20px;
+      text-align: center;
+      font-size: 11px;
+      background: white;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">⏰</div>
+    <h1>Blast from the Past</h1>
+    <p class="tagline">Rediscover your email memories</p>
+  </div>
+
+  <div class="content">
+    <div class="info-section">
+      <div class="info-title">📧 How it works</div>
+      <div class="info-text">
+        Open Gmail and click the "Blast from the Past" button to view a random email from your history (1+ year ago) presented as a beautiful memory.
+      </div>
+    </div>
+
+    <button class="button btn-primary" id="openGmail">Open Gmail</button>
+    <button class="button btn-secondary" id="openSettings">Settings</button>
+
+    <div class="instruction">
+      <strong>👉 Quick Start:</strong><br>
+      1. Click "Open Gmail" above<br>
+      2. Look for the floating button in Gmail<br>
+      3. Click it to see your first memory!
+    </div>
+  </div>
+
+  <div class="footer">
+    Made with ❤️ for nostalgia
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
