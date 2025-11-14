@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blast from the Past - Settings</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 20px;
+      padding: 48px;
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      font-size: 32px;
+      color: #333;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      color: #666;
+      font-size: 16px;
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+
+    .section {
+      margin-bottom: 32px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-description {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+
+    .radio-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .radio-option {
+      display: flex;
+      align-items: flex-start;
+      padding: 16px;
+      border: 2px solid #e0e0e0;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .radio-option:hover {
+      border-color: #667eea;
+      background: #f8f9ff;
+    }
+
+    .radio-option.selected {
+      border-color: #667eea;
+      background: #f8f9ff;
+    }
+
+    .radio-option input[type="radio"] {
+      margin-right: 12px;
+      margin-top: 2px;
+      cursor: pointer;
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    .radio-content {
+      flex: 1;
+    }
+
+    .radio-label {
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    .radio-description {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-left: 8px;
+    }
+
+    .badge-privacy {
+      background: #43e97b;
+      color: #1a5734;
+    }
+
+    .badge-recommended {
+      background: #667eea;
+      color: white;
+    }
+
+    .input-group {
+      margin-top: 12px;
+      padding-left: 30px;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: #555;
+      margin-bottom: 8px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    .input-hint {
+      font-size: 12px;
+      color: #999;
+      margin-top: 6px;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 12px;
+      margin-top: 40px;
+      padding-top: 32px;
+      border-top: 1px solid #e0e0e0;
+    }
+
+    button {
+      padding: 14px 28px;
+      border: none;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      flex: 1;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn-secondary {
+      background: #f5f5f5;
+      color: #666;
+    }
+
+    .btn-secondary:hover {
+      background: #e0e0e0;
+    }
+
+    .status-message {
+      margin-top: 20px;
+      padding: 16px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      text-align: center;
+      display: none;
+    }
+
+    .status-message.success {
+      background: #43e97b;
+      color: #1a5734;
+      display: block;
+    }
+
+    .status-message.error {
+      background: #ff6b6b;
+      color: white;
+      display: block;
+    }
+
+    .info-box {
+      background: #f8f9ff;
+      border: 2px solid #d0d9ff;
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 32px;
+    }
+
+    .info-box-title {
+      font-weight: 700;
+      color: #667eea;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+
+    .info-box-content {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .info-box ul {
+      margin-top: 12px;
+      padding-left: 20px;
+    }
+
+    .info-box li {
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>⏰ Blast from the Past</h1>
+    <p class="subtitle">Configure how your email memories are processed. Choose between local AI processing for maximum privacy or cloud-based options.</p>
+
+    <div class="section">
+      <div class="section-title">
+        🤖 LLM Provider
+      </div>
+      <div class="section-description">
+        Select how you want to process your emails. Chrome AI and Ollama keep your data completely private on your device.
+      </div>
+
+      <div class="radio-group">
+        <label class="radio-option" data-provider="chrome">
+          <input type="radio" name="llmProvider" value="chrome" checked>
+          <div class="radio-content">
+            <span class="radio-label">
+              Chrome Built-in AI
+              <span class="badge badge-privacy">Most Private</span>
+              <span class="badge badge-recommended">Recommended</span>
+            </span>
+            <div class="radio-description">
+              Uses Chrome's built-in AI models (available in Chrome 128+). Completely private - your emails never leave your browser. No API key needed.
+            </div>
+          </div>
+        </label>
+
+        <label class="radio-option" data-provider="ollama">
+          <input type="radio" name="llmProvider" value="ollama">
+          <div class="radio-content">
+            <span class="radio-label">
+              Ollama (Local)
+              <span class="badge badge-privacy">Most Private</span>
+            </span>
+            <div class="radio-description">
+              Run AI models locally on your machine. Requires Ollama to be installed and running. 100% private, but requires setup.
+            </div>
+          </div>
+        </label>
+        <div id="ollamaInput" class="input-group" style="display: none;">
+          <label for="ollamaUrl">Ollama URL</label>
+          <input type="text" id="ollamaUrl" placeholder="http://localhost:11434">
+          <div class="input-hint">Default: http://localhost:11434</div>
+        </div>
+
+        <label class="radio-option" data-provider="openrouter">
+          <input type="radio" name="llmProvider" value="openrouter">
+          <div class="radio-content">
+            <span class="radio-label">OpenRouter</span>
+            <div class="radio-description">
+              Access multiple AI models through OpenRouter. Requires an API key. Your emails are sent to OpenRouter for processing.
+            </div>
+          </div>
+        </label>
+        <div id="openrouterInput" class="input-group" style="display: none;">
+          <label for="openrouterKey">OpenRouter API Key</label>
+          <input type="password" id="openrouterKey" placeholder="sk-or-...">
+          <div class="input-hint">Get your key at <a href="https://openrouter.ai" target="_blank">openrouter.ai</a></div>
+        </div>
+
+        <label class="radio-option" data-provider="custom">
+          <input type="radio" name="llmProvider" value="custom">
+          <div class="radio-content">
+            <span class="radio-label">Custom API (OpenAI, etc.)</span>
+            <div class="radio-description">
+              Use your own OpenAI API key or any OpenAI-compatible API. Your emails are sent to the API provider for processing.
+            </div>
+          </div>
+        </label>
+        <div id="customInput" class="input-group" style="display: none;">
+          <label for="customKey">API Key</label>
+          <input type="password" id="customKey" placeholder="sk-...">
+          <div class="input-hint">OpenAI or OpenAI-compatible API key</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <div class="info-box-title">🔒 Privacy Information</div>
+      <div class="info-box-content">
+        <strong>Chrome AI & Ollama:</strong> Your emails are processed entirely on your device. No data is sent to any server.
+        <ul>
+          <li><strong>Chrome AI:</strong> Requires Chrome 128+ with AI features enabled</li>
+          <li><strong>Ollama:</strong> Requires <a href="https://ollama.ai" target="_blank">Ollama</a> to be installed and running</li>
+        </ul>
+        <strong>Cloud Options:</strong> OpenRouter and Custom API options send your email content to third-party services for processing. Please review their privacy policies.
+      </div>
+    </div>
+
+    <div class="button-group">
+      <button type="button" class="btn-secondary" id="resetBtn">Reset to Default</button>
+      <button type="button" class="btn-primary" id="saveBtn">Save Settings</button>
+    </div>
+
+    <div id="statusMessage" class="status-message"></div>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>
